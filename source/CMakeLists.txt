@@ -8,6 +8,9 @@ target_link_libraries(aufgabe5 m)
 add_executable(bsp bsp.cpp)
 target_link_libraries(bsp m)
 
+add_executable(aufgabe7 aufgabe7.cpp circle.cpp vec2.cpp mat2.cpp)
+
+
 
 
 # Build tests
@@ -15,3 +18,4 @@ target_link_libraries(bsp m)
 #target_link_libraries(tests m)
 
 
+	
