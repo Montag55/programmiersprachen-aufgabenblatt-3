@@ -90,12 +90,29 @@ TEST_CASE("describe_tranform", "[aufgabe10]"){
 	REQUIRE(std::all_of(v3.begin(), v3.end(), [](int a){return a == 10;}));
 }
 //3.11
-TEST_CASE ("describe_filter", "[aufgabe11]"){
+TEST_CASE("describe_filter", "[aufgabe11]"){
     std::vector<int> v{1, 2, 3, 4, 5, 6};
     std::vector<int> alleven = filter(v, is_even);
 	REQUIRE(std::all_of(alleven.begin(), alleven.end(), is_even));
 }
 
+//3.13
+TEST_CASE("describe_copyif", "[aufgabe13]"){
+    std::vector<Circle> c1;
+    std::vector<Circle> c2(3);
+    Circle a(Vec2(0.0f, 0.0f), 5.0f);
+	Circle b(Vec2(0.0f, 0.0f), 3.0f);
+	Circle c(Vec2(0.0f, 0.0f), 8.0f);
+	Circle d(Vec2(0.0f, 0.0f), 1.0f);
+	Circle e(Vec2(0.0f, 0.0f), 5.0f);
+	c1.push_back(a);
+	c1.push_back(b);
+	c1.push_back(c);
+	c1.push_back(d);
+	c1.push_back(e);
+    std::copy_if(c1.begin(), c1.end(), c2.begin(), [] (Circle a){return a.radius() > 4.0f; });
+	REQUIRE(std::all_of(c2.begin(), c2.end(), [](Circle a){return a.radius() > 3.0f;}));
+}
 
 int main(int argc, char* argv[]){
 	return Catch::Session().run(argc, argv);
